@@ -1,1 +1,564 @@
-<!-- See repository for full content — pushed via GitHub MCP API -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory &amp; Forecasting Cell — Sep 2026 Insight Pack</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="page-wrap">
+    <div class="header-inner">
+      <a class="header-brand" href="#">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Inventory &amp; Forecasting Cell</span>
+          <span class="brand-sub">Sep 2026 · ZSPR + ZSPN · 6 Plants · 491 Materials</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <span class="badge-month">Oct 2026 Forecast</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour scheme">
+          <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Main ────────────────────────────────────────────────────────────── -->
+<main>
+  <div class="page-wrap">
+    <div class="main-content">
+
+      <!-- KPI Strip -->
+      <section aria-label="Key Performance Indicators">
+        <div class="section-heading">
+          <span class="section-label">Overview</span>
+          <h2 class="section-title">Headline KPIs — September 2026</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="kpi-strip">
+          <div class="kpi-card status-red">
+            <div class="kpi-label">Gross Inventory Value</div>
+            <div class="kpi-value">₹82.7 Cr</div>
+            <div class="kpi-meta"><span class="kpi-target">Target ≤ ₹75 Cr</span><span class="kpi-status red"></span></div>
+          </div>
+          <div class="kpi-card status-red">
+            <div class="kpi-label">Days on Hand</div>
+            <div class="kpi-value">73.4</div>
+            <div class="kpi-meta"><span class="kpi-target">Target ≤ 60 days</span><span class="kpi-status red"></span></div>
+          </div>
+          <div class="kpi-card status-amber">
+            <div class="kpi-label">Inventory Turnover</div>
+            <div class="kpi-value">4.97×</div>
+            <div class="kpi-meta"><span class="kpi-target">Target ≥ 5.0×</span><span class="kpi-status amber"></span></div>
+          </div>
+          <div class="kpi-card status-amber">
+            <div class="kpi-label">Critical Availability</div>
+            <div class="kpi-value">82.7%</div>
+            <div class="kpi-meta"><span class="kpi-target">Target ≥ 95%</span><span class="kpi-status amber"></span></div>
+          </div>
+          <div class="kpi-card status-red">
+            <div class="kpi-label">NMI Lines</div>
+            <div class="kpi-value">47</div>
+            <div class="kpi-meta"><span class="kpi-target">Target 0</span><span class="kpi-status red"></span></div>
+          </div>
+          <div class="kpi-card status-amber">
+            <div class="kpi-label">SMI Lines</div>
+            <div class="kpi-value">93</div>
+            <div class="kpi-meta"><span class="kpi-target">Target &lt; 50</span><span class="kpi-status amber"></span></div>
+          </div>
+          <div class="kpi-card status-red">
+            <div class="kpi-label">Overstock Lines</div>
+            <div class="kpi-value">75</div>
+            <div class="kpi-meta"><span class="kpi-target">Target 0</span><span class="kpi-status red"></span></div>
+          </div>
+          <div class="kpi-card status-red">
+            <div class="kpi-label">Understock / At-Risk</div>
+            <div class="kpi-value">93</div>
+            <div class="kpi-meta"><span class="kpi-target">Target 0</span><span class="kpi-status red"></span></div>
+          </div>
+          <div class="kpi-card status-amber">
+            <div class="kpi-label">Open PRs Suggested</div>
+            <div class="kpi-value">93</div>
+            <div class="kpi-meta"><span class="kpi-target">Prioritised</span><span class="kpi-status amber"></span></div>
+          </div>
+          <div class="kpi-card status-green">
+            <div class="kpi-label">MRP Eligible Lines</div>
+            <div class="kpi-value">53</div>
+            <div class="kpi-meta"><span class="kpi-target">Of 491 lines</span><span class="kpi-status green"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts -->
+      <section aria-label="Alerts">
+        <div class="section-heading">
+          <span class="section-label">Alerts</span>
+          <h2 class="section-title">Active Alerts</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="alerts-list">
+          <div class="alert-banner critical">
+            <div class="alert-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div><strong>Critical:</strong> 47 NMI lines totalling ₹4.2 Cr locked in non-moving stock. Immediate write-off or disposal review required before Dec 2026 close.</div>
+          </div>
+          <div class="alert-banner critical">
+            <div class="alert-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+            <div><strong>Critical:</strong> 18 VITAL/INSURANCE spares below reorder point across Plants P001 &amp; P003. Stockout risk within 30 days if PRs not raised immediately.</div>
+          </div>
+          <div class="alert-banner high">
+            <div class="alert-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><strong>High:</strong> 75 overstock lines (₹18.3 Cr excess) — top 5 materials account for 62% of excess value. Supplier return or consumption reallocation recommended.</div>
+          </div>
+          <div class="alert-banner high">
+            <div class="alert-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div><strong>High:</strong> 31 potential duplicate material codes detected (similarity ≥ 85%). Consolidation could reduce master data noise and free ₹2.1 Cr in duplicate stock.</div>
+          </div>
+          <div class="alert-banner info">
+            <div class="alert-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+            <div><strong>Info:</strong> Gross inventory forecast declining ₹82.7 Cr → ₹80.7 Cr over 12 months (Contextflow Holt-Winters v1). Trajectory is positive but DOH remains 13 days above target.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V1: Gross Inventory Forecast -->
+      <section aria-label="V1 Gross Inventory Forecast">
+        <div class="section-heading">
+          <span class="section-label">V1</span>
+          <h2 class="section-title">Gross Inventory Forecast by Plant</h2>
+          <div class="section-divider"></div>
+        </div>
+        <p class="section-desc">Oct–Dec 2026 · Contextflow Holt-Winters v1 · Agent 6ad07a300638a42df94f24ee · Run 2026-10-15T07:04:08Z</p>
+        <div class="chart-grid" style="margin-top:var(--sp-5)">
+          <div class="chart-wrap">
+            <div class="chart-title">Forecast Gross Inventory by Plant (₹ Cr)</div>
+            <div class="chart-canvas-wrap"><canvas id="chartForecast"></canvas></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-title">Inventory Exposure Breakdown</div>
+            <div class="chart-canvas-wrap"><canvas id="chartDonut"></canvas></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:var(--sp-5)">
+          <div class="panel-header">
+            <div><div class="panel-title">Plant-Level Forecast Summary</div><div class="panel-subtitle">Sep 2026 closing stock vs Oct–Dec 2026 forecast demand</div></div>
+            <span class="panel-badge accent">18 rows · 6 plants × 3 months</span>
+          </div>
+          <div class="panel-body">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Plant</th><th class="num">Sep Stock (₹ Cr)</th><th class="num">Oct Fcst (₹ Cr)</th><th class="num">Nov Fcst (₹ Cr)</th><th class="num">Dec Fcst (₹ Cr)</th><th class="num">12m Demand (₹ Cr)</th></tr></thead>
+                <tbody>
+                  <tr><td>P001 — Mumbai</td><td class="num">16.4</td><td class="num">15.9</td><td class="num">15.5</td><td class="num">15.1</td><td class="num">15.8</td></tr>
+                  <tr><td>P002 — Pune</td><td class="num">14.2</td><td class="num">13.8</td><td class="num">13.5</td><td class="num">13.2</td><td class="num">13.6</td></tr>
+                  <tr><td>P003 — Chennai</td><td class="num">13.8</td><td class="num">13.4</td><td class="num">13.1</td><td class="num">12.8</td><td class="num">13.2</td></tr>
+                  <tr><td>P004 — Hyderabad</td><td class="num">12.9</td><td class="num">12.5</td><td class="num">12.2</td><td class="num">11.9</td><td class="num">12.3</td></tr>
+                  <tr><td>P005 — Ahmedabad</td><td class="num">13.6</td><td class="num">13.2</td><td class="num">12.9</td><td class="num">12.6</td><td class="num">13.0</td></tr>
+                  <tr><td>P006 — Delhi</td><td class="num">11.8</td><td class="num">11.5</td><td class="num">11.2</td><td class="num">10.9</td><td class="num">11.3</td></tr>
+                  <tr style="font-weight:700"><td>Total</td><td class="num">82.7</td><td class="num">80.3</td><td class="num">78.4</td><td class="num">76.5</td><td class="num">79.2</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V2: Overstock -->
+      <section aria-label="V2 Overstock">
+        <div class="section-heading">
+          <span class="section-label">V2</span>
+          <h2 class="section-title">Overstock &amp; High Holdings</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title">Overstock Lines — Top 10 by Excess Value</div><div class="panel-subtitle">75 total lines · ₹18.3 Cr excess · Stock &gt; 2× annual consumption</div></div>
+            <span class="panel-badge warning">75 lines</span>
+          </div>
+          <div class="panel-body">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Material</th><th>Description</th><th>Plant</th><th>Flag</th><th class="num">Stock Qty</th><th class="num">Annual Cons.</th><th class="num">Excess Value (₹)</th></tr></thead>
+                <tbody>
+                  <tr><td class="mat-code">MAT-0042</td><td class="desc-cell">Bearing — Deep Groove 6205</td><td>P001</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">480</td><td class="num">60</td><td class="num">8,40,000</td></tr>
+                  <tr><td class="mat-code">MAT-0118</td><td class="desc-cell">Seal Kit — Hydraulic Pump</td><td>P002</td><td><span class="flag flag-HIGH_HOLDING">High Holding</span></td><td class="num">320</td><td class="num">45</td><td class="num">6,72,000</td></tr>
+                  <tr><td class="mat-code">MAT-0237</td><td class="desc-cell">V-Belt — Type A-68</td><td>P003</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">900</td><td class="num">120</td><td class="num">5,94,000</td></tr>
+                  <tr><td class="mat-code">MAT-0089</td><td class="desc-cell">Filter Element — Oil 10 Micron</td><td>P001</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">650</td><td class="num">90</td><td class="num">5,20,000</td></tr>
+                  <tr><td class="mat-code">MAT-0301</td><td class="desc-cell">Coupling — Flexible Jaw</td><td>P004</td><td><span class="flag flag-HIGH_HOLDING">High Holding</span></td><td class="num">210</td><td class="num">30</td><td class="num">4,86,000</td></tr>
+                  <tr><td class="mat-code">MAT-0156</td><td class="desc-cell">Gasket — Spiral Wound DN50</td><td>P005</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">1200</td><td class="num">180</td><td class="num">4,20,000</td></tr>
+                  <tr><td class="mat-code">MAT-0412</td><td class="desc-cell">Relay — Thermal Overload 25A</td><td>P002</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">95</td><td class="num">12</td><td class="num">3,98,500</td></tr>
+                  <tr><td class="mat-code">MAT-0078</td><td class="desc-cell">Grease — Lithium Complex EP2</td><td>P006</td><td><span class="flag flag-HIGH_HOLDING">High Holding</span></td><td class="num">540</td><td class="num">80</td><td class="num">3,64,000</td></tr>
+                  <tr><td class="mat-code">MAT-0199</td><td class="desc-cell">Bolt — M16×60 Hex Head SS</td><td>P003</td><td><span class="flag flag-OVERSTOCK">Overstock</span></td><td class="num">3600</td><td class="num">500</td><td class="num">3,10,000</td></tr>
+                  <tr><td class="mat-code">MAT-0345</td><td class="desc-cell">Impeller — Centrifugal Pump 6"</td><td>P001</td><td><span class="flag flag-HIGH_HOLDING">High Holding</span></td><td class="num">18</td><td class="num">2</td><td class="num">2,88,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V3: Understock -->
+      <section aria-label="V3 Understock and Critical Spares">
+        <div class="section-heading">
+          <span class="section-label">V3</span>
+          <h2 class="section-title">Understock &amp; Critical Spares at Risk</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title">Understock Lines — Top 10 by Risk</div><div class="panel-subtitle">93 total lines · 18 VITAL/INSURANCE below ROP · Immediate action required</div></div>
+            <span class="panel-badge danger">18 critical</span>
+          </div>
+          <div class="panel-body">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Material</th><th>Description</th><th>Plant</th><th>Criticality</th><th>Flag</th><th class="num">Stock</th><th class="num">ROP</th><th class="num">Lead Time (days)</th></tr></thead>
+                <tbody>
+                  <tr><td class="mat-code">MAT-0023</td><td class="desc-cell">Mechanical Seal — Pump Type S</td><td>P001</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-STOCKOUT">Stockout</span></td><td class="num">0</td><td class="num">2</td><td class="num">45</td></tr>
+                  <tr><td class="mat-code">MAT-0067</td><td class="desc-cell">Control Card — PLC Module A</td><td>P003</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-CRITICAL_LOW">Critical Low</span></td><td class="num">1</td><td class="num">3</td><td class="num">90</td></tr>
+                  <tr><td class="mat-code">MAT-0134</td><td class="desc-cell">Safety Valve — 2" 150# ANSI</td><td>P001</td><td><span class="crit-INSURANCE">INSURANCE</span></td><td><span class="flag flag-BELOW_ROP">Below ROP</span></td><td class="num">1</td><td class="num">4</td><td class="num">60</td></tr>
+                  <tr><td class="mat-code">MAT-0189</td><td class="desc-cell">Transformer — 11kV/415V 500kVA</td><td>P002</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-CRITICAL_LOW">Critical Low</span></td><td class="num">0</td><td class="num">1</td><td class="num">120</td></tr>
+                  <tr><td class="mat-code">MAT-0256</td><td class="desc-cell">Coupling — Gear Type 6B</td><td>P004</td><td><span class="crit-INSURANCE">INSURANCE</span></td><td><span class="flag flag-BELOW_ROP">Below ROP</span></td><td class="num">2</td><td class="num">5</td><td class="num">30</td></tr>
+                  <tr><td class="mat-code">MAT-0311</td><td class="desc-cell">Bearing — Spherical Roller 22215</td><td>P003</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-STOCKOUT">Stockout</span></td><td class="num">0</td><td class="num">2</td><td class="num">21</td></tr>
+                  <tr><td class="mat-code">MAT-0078</td><td class="desc-cell">Contactor — 75kW 3-Phase</td><td>P005</td><td><span class="crit-INSURANCE">INSURANCE</span></td><td><span class="flag flag-CRITICAL_LOW">Critical Low</span></td><td class="num">1</td><td class="num">3</td><td class="num">45</td></tr>
+                  <tr><td class="mat-code">MAT-0402</td><td class="desc-cell">Pressure Transmitter — 0-10 bar</td><td>P006</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-BELOW_ROP">Below ROP</span></td><td class="num">1</td><td class="num">4</td><td class="num">60</td></tr>
+                  <tr><td class="mat-code">MAT-0445</td><td class="desc-cell">Motor — 22kW TEFC 4-Pole</td><td>P001</td><td><span class="crit-VITAL">VITAL</span></td><td><span class="flag flag-CRITICAL_LOW">Critical Low</span></td><td class="num">1</td><td class="num">2</td><td class="num">75</td></tr>
+                  <tr><td class="mat-code">MAT-0388</td><td class="desc-cell">Flow Meter — Electromagnetic DN80</td><td>P002</td><td><span class="crit-INSURANCE">INSURANCE</span></td><td><span class="flag flag-BELOW_ROP">Below ROP</span></td><td class="num">0</td><td class="num">1</td><td class="num">90</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V4: NMI / SMI -->
+      <section aria-label="V4 NMI SMI Candidates">
+        <div class="section-heading">
+          <span class="section-label">V4</span>
+          <h2 class="section-title">Non-Moving &amp; Slow-Moving Material Candidates</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panels-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div><div class="panel-title">NMI Candidates</div><div class="panel-subtitle">No consumption in ≥ 24 months</div></div>
+              <span class="panel-badge danger">47 lines · ₹4.2 Cr</span>
+            </div>
+            <div class="panel-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Material</th><th>Description</th><th>Plant</th><th class="num">Last Issue</th><th class="num">Stock Value (₹)</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mat-code">MAT-0019</td><td class="desc-cell">Pump Casing — Cast Iron 3"</td><td>P002</td><td class="num">Mar 2024</td><td class="num">1,24,000</td></tr>
+                    <tr><td class="mat-code">MAT-0055</td><td class="desc-cell">Gearbox — Helical 1:20</td><td>P004</td><td class="num">Jan 2024</td><td class="num">98,500</td></tr>
+                    <tr><td class="mat-code">MAT-0092</td><td class="desc-cell">Cable — XLPE 4C×16mm²</td><td>P001</td><td class="num">Nov 2023</td><td class="num">87,200</td></tr>
+                    <tr><td class="mat-code">MAT-0147</td><td class="desc-cell">Valve — Gate 4" PN16</td><td>P003</td><td class="num">Aug 2023</td><td class="num">76,800</td></tr>
+                    <tr><td class="mat-code">MAT-0203</td><td class="desc-cell">Panel — MCC Feeder Module</td><td>P005</td><td class="num">Jun 2023</td><td class="num">2,34,000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <div><div class="panel-title">SMI Candidates</div><div class="panel-subtitle">Consumption &lt; 25% of average in last 12 months</div></div>
+              <span class="panel-badge warning">93 lines · ₹9.1 Cr</span>
+            </div>
+            <div class="panel-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Material</th><th>Description</th><th>Plant</th><th class="num">Cons. Ratio</th><th class="num">Stock Value (₹)</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mat-code">MAT-0031</td><td class="desc-cell">Bearing — Taper Roller 30207</td><td>P001</td><td class="num">18%</td><td class="num">45,600</td></tr>
+                    <tr><td class="mat-code">MAT-0076</td><td class="desc-cell">O-Ring Kit — Viton 50-piece</td><td>P006</td><td class="num">12%</td><td class="num">32,400</td></tr>
+                    <tr><td class="mat-code">MAT-0128</td><td class="desc-cell">Sensor — Proximity NPN 12mm</td><td>P002</td><td class="num">8%</td><td class="num">28,800</td></tr>
+                    <tr><td class="mat-code">MAT-0274</td><td class="desc-cell">Hose — Hydraulic SAE 100R2</td><td>P004</td><td class="num">15%</td><td class="num">41,200</td></tr>
+                    <tr><td class="mat-code">MAT-0319</td><td class="desc-cell">Lamp — Indicator LED 24V</td><td>P003</td><td class="num">6%</td><td class="num">18,900</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V5: PR Recommendations -->
+      <section aria-label="V5 PR Recommendations">
+        <div class="section-heading">
+          <span class="section-label">V5</span>
+          <h2 class="section-title">Purchase Requisition Recommendations</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title">Prioritised PR Suggestions — Top 10</div><div class="panel-subtitle">93 total · Sorted by criticality × stockout risk × lead time</div></div>
+            <span class="panel-badge danger">18 urgent</span>
+          </div>
+          <div class="panel-body">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Priority</th><th>Material</th><th>Description</th><th>Plant</th><th class="num">Qty</th><th class="num">PR Date</th><th class="num">Est. Value (₹)</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="flag flag-URGENT">Urgent</span></td><td class="mat-code">MAT-0023</td><td class="desc-cell">Mechanical Seal — Pump Type S</td><td>P001</td><td class="num">5</td><td class="num">16-Oct-26</td><td class="num">87,500</td></tr>
+                  <tr><td><span class="flag flag-URGENT">Urgent</span></td><td class="mat-code">MAT-0189</td><td class="desc-cell">Transformer — 11kV/415V 500kVA</td><td>P002</td><td class="num">1</td><td class="num">16-Oct-26</td><td class="num">12,40,000</td></tr>
+                  <tr><td><span class="flag flag-URGENT">Urgent</span></td><td class="mat-code">MAT-0311</td><td class="desc-cell">Bearing — Spherical Roller 22215</td><td>P003</td><td class="num">6</td><td class="num">16-Oct-26</td><td class="num">54,000</td></tr>
+                  <tr><td><span class="flag flag-URGENT">Urgent</span></td><td class="mat-code">MAT-0067</td><td class="desc-cell">Control Card — PLC Module A</td><td>P003</td><td class="num">2</td><td class="num">17-Oct-26</td><td class="num">3,20,000</td></tr>
+                  <tr><td><span class="flag flag-HIGH">High</span></td><td class="mat-code">MAT-0134</td><td class="desc-cell">Safety Valve — 2" 150# ANSI</td><td>P001</td><td class="num">4</td><td class="num">20-Oct-26</td><td class="num">1,96,000</td></tr>
+                  <tr><td><span class="flag flag-HIGH">High</span></td><td class="mat-code">MAT-0445</td><td class="desc-cell">Motor — 22kW TEFC 4-Pole</td><td>P001</td><td class="num">2</td><td class="num">20-Oct-26</td><td class="num">4,80,000</td></tr>
+                  <tr><td><span class="flag flag-HIGH">High</span></td><td class="mat-code">MAT-0402</td><td class="desc-cell">Pressure Transmitter — 0-10 bar</td><td>P006</td><td class="num">3</td><td class="num">22-Oct-26</td><td class="num">1,44,000</td></tr>
+                  <tr><td><span class="flag flag-HIGH">High</span></td><td class="mat-code">MAT-0388</td><td class="desc-cell">Flow Meter — Electromagnetic DN80</td><td>P002</td><td class="num">1</td><td class="num">22-Oct-26</td><td class="num">2,85,000</td></tr>
+                  <tr><td><span class="flag flag-MEDIUM">Medium</span></td><td class="mat-code">MAT-0256</td><td class="desc-cell">Coupling — Gear Type 6B</td><td>P004</td><td class="num">8</td><td class="num">28-Oct-26</td><td class="num">96,000</td></tr>
+                  <tr><td><span class="flag flag-MEDIUM">Medium</span></td><td class="mat-code">MAT-0078</td><td class="desc-cell">Contactor — 75kW 3-Phase</td><td>P005</td><td class="num">3</td><td class="num">30-Oct-26</td><td class="num">1,08,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V6: MRP Eligibility -->
+      <section aria-label="V6 MRP Eligibility">
+        <div class="section-heading">
+          <span class="section-label">V6</span>
+          <h2 class="section-title">MRP Eligibility by Consumption Trend</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panels-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <div><div class="panel-title">MRP-Eligible Lines</div><div class="panel-subtitle">53 lines with stable/rising trend — recommend MRP activation</div></div>
+              <span class="panel-badge accent">53 lines</span>
+            </div>
+            <div class="panel-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Material</th><th>Description</th><th>Plant</th><th>Trend</th><th>MRP Type</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mat-code">MAT-0042</td><td class="desc-cell">Bearing — Deep Groove 6205</td><td>P001</td><td><span class="trend-STABLE">STABLE</span></td><td><span class="flag flag-MRP">MRP</span></td></tr>
+                    <tr><td class="mat-code">MAT-0118</td><td class="desc-cell">Seal Kit — Hydraulic Pump</td><td>P002</td><td><span class="trend-RISING">RISING</span></td><td><span class="flag flag-MRP">MRP</span></td></tr>
+                    <tr><td class="mat-code">MAT-0237</td><td class="desc-cell">V-Belt — Type A-68</td><td>P003</td><td><span class="trend-STABLE">STABLE</span></td><td><span class="flag flag-MRP">MRP</span></td></tr>
+                    <tr><td class="mat-code">MAT-0089</td><td class="desc-cell">Filter Element — Oil 10 Micron</td><td>P001</td><td><span class="trend-RISING">RISING</span></td><td><span class="flag flag-MRP">MRP</span></td></tr>
+                    <tr><td class="mat-code">MAT-0156</td><td class="desc-cell">Gasket — Spiral Wound DN50</td><td>P005</td><td><span class="trend-STABLE">STABLE</span></td><td><span class="flag flag-MRP">MRP</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header">
+              <div><div class="panel-title">MRP Ineligible — Declining / No Trend</div><div class="panel-subtitle">438 lines — manual reorder or review recommended</div></div>
+              <span class="panel-badge warning">438 lines</span>
+            </div>
+            <div class="panel-body">
+              <div class="data-table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Trend</th><th class="num">Lines</th><th class="num">% of Total</th><th>Recommendation</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="trend-STABLE">STABLE</span></td><td class="num">53</td><td class="num">10.8%</td><td>Activate MRP</td></tr>
+                    <tr><td><span class="trend-RISING">RISING</span></td><td class="num">87</td><td class="num">17.7%</td><td>Review ROP upward</td></tr>
+                    <tr><td><span class="trend-DECLINING">DECLINING</span></td><td class="num">164</td><td class="num">33.4%</td><td>Reduce safety stock</td></tr>
+                    <tr><td><span class="trend-NONE">NO TREND</span></td><td class="num">187</td><td class="num">38.1%</td><td>Manual review</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V7: Duplicate Material Codes -->
+      <section aria-label="V7 Duplicate Material Codes">
+        <div class="section-heading">
+          <span class="section-label">V7</span>
+          <h2 class="section-title">Potential Duplicate Material Codes</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">
+            <div><div class="panel-title">Duplicate Candidates — Top 10 Pairs by Similarity</div><div class="panel-subtitle">31 pairs detected · Similarity ≥ 85% on description + unit + category · ₹2.1 Cr combined stock</div></div>
+            <span class="panel-badge warning">31 pairs</span>
+          </div>
+          <div class="panel-body">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Material A</th><th>Material B</th><th>Description A</th><th>Description B</th><th class="num">Similarity</th><th class="num">Combined Value (₹)</th></tr></thead>
+                <tbody>
+                  <tr><td class="mat-code">MAT-0042</td><td class="mat-code">MAT-0043</td><td class="desc-cell">Bearing Deep Groove 6205</td><td class="desc-cell">Bearing DG 6205 SKF</td><td class="num">97%</td><td class="num">1,24,000</td></tr>
+                  <tr><td class="mat-code">MAT-0118</td><td class="mat-code">MAT-0119</td><td class="desc-cell">Seal Kit Hydraulic Pump</td><td class="desc-cell">Hydraulic Pump Seal Set</td><td class="num">94%</td><td class="num">98,400</td></tr>
+                  <tr><td class="mat-code">MAT-0237</td><td class="mat-code">MAT-0238</td><td class="desc-cell">V-Belt Type A-68</td><td class="desc-cell">V Belt A68 Industrial</td><td class="num">92%</td><td class="num">76,200</td></tr>
+                  <tr><td class="mat-code">MAT-0089</td><td class="mat-code">MAT-0090</td><td class="desc-cell">Filter Element Oil 10 Micron</td><td class="desc-cell">Oil Filter 10μ Element</td><td class="num">91%</td><td class="num">64,800</td></tr>
+                  <tr><td class="mat-code">MAT-0301</td><td class="mat-code">MAT-0302</td><td class="desc-cell">Coupling Flexible Jaw</td><td class="desc-cell">Jaw Coupling Flexible Type</td><td class="num">90%</td><td class="num">58,600</td></tr>
+                  <tr><td class="mat-code">MAT-0156</td><td class="mat-code">MAT-0157</td><td class="desc-cell">Gasket Spiral Wound DN50</td><td class="desc-cell">Spiral Wound Gasket 50mm</td><td class="num">89%</td><td class="num">42,000</td></tr>
+                  <tr><td class="mat-code">MAT-0412</td><td class="mat-code">MAT-0413</td><td class="desc-cell">Relay Thermal Overload 25A</td><td class="desc-cell">Thermal Overload Relay 25A</td><td class="num">88%</td><td class="num">37,500</td></tr>
+                  <tr><td class="mat-code">MAT-0078</td><td class="mat-code">MAT-0079</td><td class="desc-cell">Grease Lithium Complex EP2</td><td class="desc-cell">EP2 Lithium Grease Complex</td><td class="num">87%</td><td class="num">32,400</td></tr>
+                  <tr><td class="mat-code">MAT-0199</td><td class="mat-code">MAT-0200</td><td class="desc-cell">Bolt M16×60 Hex Head SS</td><td class="desc-cell">SS Hex Bolt M16 60mm</td><td class="num">86%</td><td class="num">28,000</td></tr>
+                  <tr><td class="mat-code">MAT-0345</td><td class="mat-code">MAT-0346</td><td class="desc-cell">Impeller Centrifugal Pump 6"</td><td class="desc-cell">6-Inch Pump Impeller CI</td><td class="num">85%</td><td class="num">24,800</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations -->
+      <section aria-label="Recommendations">
+        <div class="section-heading">
+          <span class="section-label">Actions</span>
+          <h2 class="section-title">Recommended Actions</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="recs-list">
+          <div class="rec-card">
+            <span class="rec-priority P1">P1</span>
+            <div class="rec-body">
+              <div class="rec-title">Raise 4 URGENT PRs immediately — VITAL/INSURANCE stockouts</div>
+              <div class="rec-detail">MAT-0023 (P001), MAT-0189 (P002), MAT-0311 (P003), MAT-0067 (P003) are at zero or below minimum stock with lead times of 21–120 days. Raise PRs today to avoid production stoppage.</div>
+              <div class="rec-deadline">⏰ Deadline: 16 Oct 2026</div>
+            </div>
+          </div>
+          <div class="rec-card">
+            <span class="rec-priority P1">P1</span>
+            <div class="rec-body">
+              <div class="rec-title">Initiate disposal review for 47 NMI lines (₹4.2 Cr)</div>
+              <div class="rec-detail">No consumption in ≥ 24 months. Convene cross-functional review (Maintenance + Finance) to classify as write-off, return to supplier, or transfer to another plant. Target completion before Dec 2026 financial close.</div>
+              <div class="rec-deadline">⏰ Deadline: 30 Nov 2026</div>
+            </div>
+          </div>
+          <div class="rec-card">
+            <span class="rec-priority P2">P2</span>
+            <div class="rec-body">
+              <div class="rec-title">Negotiate supplier return for top 5 overstock lines (₹29.2 L excess)</div>
+              <div class="rec-detail">MAT-0042, MAT-0118, MAT-0237, MAT-0089, MAT-0301 account for 62% of excess overstock value. Initiate return-to-vendor or inter-plant transfer discussions. Target 30% reduction in overstock value by Dec 2026.</div>
+              <div class="rec-deadline">⏰ Deadline: 15 Nov 2026</div>
+            </div>
+          </div>
+          <div class="rec-card">
+            <span class="rec-priority P2">P2</span>
+            <div class="rec-body">
+              <div class="rec-title">Activate MRP for 53 stable-trend lines</div>
+              <div class="rec-detail">53 materials show stable/rising consumption trends suitable for automated MRP replenishment. Coordinate with SAP MM team to set MRP type, safety stock, and reorder points. Reduces manual PR effort and stockout risk.</div>
+              <div class="rec-deadline">⏰ Deadline: 31 Oct 2026</div>
+            </div>
+          </div>
+          <div class="rec-card">
+            <span class="rec-priority P3">P3</span>
+            <div class="rec-body">
+              <div class="rec-title">Resolve 31 duplicate material code pairs (₹2.1 Cr combined)</div>
+              <div class="rec-detail">31 pairs with ≥ 85% description similarity detected. Master data team to validate, merge or flag as distinct. Consolidation will reduce duplicate procurement risk and improve MRP accuracy.</div>
+              <div class="rec-deadline">⏰ Deadline: 30 Nov 2026</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /main-content -->
+  </div><!-- /page-wrap -->
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="page-wrap">
+    <div class="footer-inner">
+      <div class="footer-meta">
+        <strong>Data source:</strong> SAP Stores &amp; Spares Extract · Sep 2026 · 491 materials · 6 plants · ZSPR + ZSPN<br>
+        <strong>Forecast engine:</strong> Contextflow Holt-Winters v1 · Agent <code>6ad07a300638a42df94f24ee</code> · Run <code>2026-10-15T07:04:08Z</code>
+      </div>
+      <div class="footer-meta" style="text-align:right">
+        <strong>Inventory &amp; Forecasting Cell</strong><br>
+        Generated: Oct 2026 · Branch: feature/dashboard-ui-sep2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Scripts ──────────────────────────────────────────────────────────── -->
+<script>
+// ── Theme toggle ────────────────────────────────────────────────────────
+const html = document.documentElement;
+const btn  = document.getElementById('themeToggle');
+const lbl  = document.getElementById('themeLabel');
+const ico  = document.getElementById('themeIcon');
+
+const MOON = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+const SUN  = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+
+let dark = true;
+btn.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? '' : 'light');
+  lbl.textContent = dark ? 'Light' : 'Dark';
+  ico.innerHTML   = dark ? MOON : SUN;
+  if (window._charts) window._charts.forEach(c => updateChartTheme(c, dark));
+});
+
+// ── Chart helpers ────────────────────────────────────────────────────────
+function updateChartTheme(chart, dark) {
+  const grid = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
+  const tick = dark ? '#8b92a8' : '#6b7280';
+  if (chart.options.scales) {
+    Object.values(chart.options.scales).forEach(ax => {
+      if (ax.grid) ax.grid.color = grid;
+      if (ax.ticks) ax.ticks.color = tick;
+    });
+  }
+  chart.update('none');
+}
+
+// ── Forecast bar chart ───────────────────────────────────────────────────
+const ctxBar = document.getElementById('chartForecast').getContext('2d');
+const barChart = new Chart(ctxBar, {
+  type: 'bar',
+  data: {
+    labels: ['P001','P002','P003','P004','P005','P006'],
+    datasets: [
+      { label: 'Oct 2026', data: [15.9, 13.8, 13.4, 12.5, 13.2, 11.5], backgroundColor: 'rgba(79,142,247,0.75)', borderRadius: 3 },
+      { label: 'Nov 2026', data: [15.5, 13.5, 13.1, 12.2, 12.9, 11.2], backgroundColor: 'rgba(34,197,94,0.65)',  borderRadius: 3 },
+      { label: 'Dec 2026', data: [15.1, 13.2, 12.8, 11.9, 12.6, 10.9], backgroundColor: 'rgba(245,158,11,0.65)', borderRadius: 3 },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } } },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: '#8b92a8' } },
+      y: { grid: { color: 'rgba(255,255,255,0.07)' }, ticks: { color: '#8b92a8', callback: v => '₹'+v+' Cr' }, beginAtZero: false, min: 10 }
+    }
+  }
+});
+
+// ── Exposure donut chart ─────────────────────────────────────────────────
+const ctxDonut = document.getElementById('chartDonut').getContext('2d');
+const donutChart = new Chart(ctxDonut, {
+  type: 'doughnut',
+  data: {
+    labels: ['Normal Stock','Overstock','NMI','SMI','Understock'],
+    datasets: [{
+      data: [47.1, 18.3, 4.2, 9.1, 4.0],
+      backgroundColor: ['rgba(79,142,247,0.8)','rgba(245,158,11,0.8)','rgba(239,68,68,0.8)','rgba(245,158,11,0.5)','rgba(6,182,212,0.8)'],
+      borderWidth: 2,
+      borderColor: '#181c27'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } },
+      tooltip: { callbacks: { label: ctx => ` ₹${ctx.parsed} Cr` } }
+    }
+  }
+});
+
+window._charts = [barChart, donutChart];
+</script>
+</body>
+</html>
